@@ -1,0 +1,9 @@
+{
+  "statusCode": 200,
+  "success": true,
+  "data": {
+    "insertId": 84,
+    "message": "otp has been send to your registered email address"
+  },
+  "message": "Temp Donor added successfully"
+}
