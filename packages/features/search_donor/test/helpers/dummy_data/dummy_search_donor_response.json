@@ -1,0 +1,20 @@
+{
+  "statusCode": 200,
+  "success": true,
+  "data": {
+    "userId": 52,
+    "name": null,
+    "email": "newuser1@gmail.com",
+    "loginType": "mobile",
+    "phone": "+15166184623",
+    "userType": "D",
+    "isActive": 1,
+    "roleId": null,
+    "organizationId": null,
+    "donorId": 164,
+    "firstName": "New",
+    "lastName": "User1",
+    "address": "EVS"
+  },
+  "message": "User fetched successfully"
+}

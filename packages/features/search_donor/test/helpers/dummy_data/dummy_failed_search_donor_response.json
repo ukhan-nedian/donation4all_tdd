@@ -1,0 +1,6 @@
+{
+  "statusCode": 400,
+  "success": false,
+  "data": [],
+  "message": "User can't fetched"
+}

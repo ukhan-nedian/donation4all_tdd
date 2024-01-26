@@ -1,0 +1,47 @@
+name: sign_in
+description: "Sign in feature"
+publish_to: 'none'
+
+version: 1.0.0
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # pub dependencies
+  cupertino_icons: ^1.0.6
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.3
+  intl: ^0.19.0
+  dartz: ^0.10.1
+  http: ^1.2.0
+  bloc_test: ^9.1.5
+  fluttertoast: ^8.2.4
+  email_validator: ^2.1.17
+  get_it: ^7.6.7
+  mocktail: ^1.0.3
+
+  # in-house dependencies
+  error:
+    path: ../../libraries/error
+  logger:
+    path: ../../libraries/logger
+  design_system:
+    path: ../../libraries/design_system
+  urls:
+    path: ../../libraries/urls
+  json_reader:
+    path: ../../libraries/json_reader
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  mockito: ^5.4.4
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
