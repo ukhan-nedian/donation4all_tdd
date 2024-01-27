@@ -26,7 +26,7 @@ void main() {
   const String testEmail = 'usman.khan@evantagesoft.com';
   const String testPassword = 'Usman@123';
   const String testMobile = '+12462498393';
-  final String testJsonBody = jsonEncode(<String, String>{
+  final testJsonBody = jsonEncode(<String, String>{
     'firstName': testFirstName,
     'lastName': testLastName,
     'email': testEmail,
@@ -34,6 +34,10 @@ void main() {
     'phone': testMobile,
     'userType': 'D',
   });
+  final TempDonor testTempDonor = TempDonor(
+    insertId: 84,
+    message: "otp has been send to your registered email address",
+  );
 
   test('temp donor success when the response code is 200', () async {
     // Arrange
@@ -57,6 +61,34 @@ void main() {
       );
       // Assert
       expect(result, isA<TempDonor>());
+    } catch (e) {
+      // Assert
+      expect(e, isA<ServerException>());
+    }
+  });
+
+  test('valid temp donor object when the call to api is successful', () async {
+    // Arrange
+    when(mockHttpClient.post(
+      Uri.parse('${Urls.baseUrl}/tempdonor/add'),
+      body: testJsonBody,
+      headers: Urls.headers,
+    )).thenAnswer((_) async => http.Response(
+          readJson('helpers/dummy_data/dummy_temp_donor_response.json'),
+          200,
+        ));
+
+    try {
+      // Act
+      final result = await tempDonorRemoteDataSourceImpl.addTempDonor(
+        testFirstName,
+        testLastName,
+        testEmail,
+        testPassword,
+        testMobile,
+      );
+      // Assert
+      expect(result, equals(testTempDonor));
     } catch (e) {
       // Assert
       expect(e, isA<ServerException>());
