@@ -62,4 +62,30 @@ void main() {
       expect(e, isA<ServerException>());
     }
   });
+
+  test('temp donor throws ServerException when the response code is not 200',
+      () async {
+    // Arrange
+    when(mockHttpClient.post(
+      Uri.parse('${Urls.baseUrl}/tempdonor/add'),
+      body: testJsonBody,
+      headers: Urls.headers,
+    )).thenAnswer((_) async => http.Response('Not found', 404));
+
+    try {
+      // Act
+      final result = await tempDonorRemoteDataSourceImpl.addTempDonor(
+        testFirstName,
+        testLastName,
+        testEmail,
+        testPassword,
+        testMobile,
+      );
+      // Assert
+      expect(result, isA<TempDonor>());
+    } catch (e) {
+      // Assert
+      expect(e, isA<ServerException>());
+    }
+  });
 }
